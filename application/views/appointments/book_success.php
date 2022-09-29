@@ -42,10 +42,12 @@
                     <?= lang('go_to_booking_page') ?>
                 </a>
 
-                <a href="<?= $add_to_google_url ?>" id="add-to-google-calendar" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-plus"></i>
-                    <?= lang('add_to_google_calendar') ?>
-                </a>
+                <?php if (config('google_sync_feature')): ?>
+                    <button id="add-to-google-calendar" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        <?= lang('add_to_google_calendar') ?>
+                    </button>
+                <?php endif ?>
 
                 <?php if (isset($exceptions)): ?>
                     <div class="m-2">
@@ -73,6 +75,7 @@
 <script src="<?= base_url('assets/ext/datejs/date.min.js') ?>"></script>
 <script src="<?= asset_url('assets/ext/moment/moment.min.js') ?>"></script>
 <script src="<?= asset_url('assets/ext/moment/moment-timezone-with-data.min.js') ?>"></script>
+<script src="https://apis.google.com/js/client.js"></script>
 
 <script>
     var GlobalVariables = {
@@ -82,6 +85,9 @@
         customerData: <?= json_encode($customer_data) ?>,
         serviceData: <?= json_encode($service_data) ?>,
         companyName: <?= json_encode($company_name) ?>,
+        googleApiKey: <?= json_encode(config('google_api_key')) ?>,
+        googleClientId: <?= json_encode(config('google_client_id')) ?>,
+        googleApiScope: 'https://www.googleapis.com/auth/calendar'
     };
 
     var EALang = <?= json_encode($this->lang->language) ?>;

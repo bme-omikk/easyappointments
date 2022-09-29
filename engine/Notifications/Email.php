@@ -86,6 +86,7 @@ class Email {
         array $appointment,
         array $provider,
         array $service,
+	/** array $select_servicemode, */
         array $customer,
         array $settings,
         Text $title,
@@ -141,16 +142,27 @@ class Email {
             'email_message' => $message->get(),
             'appointment_service' => $service['name'],
             'appointment_provider' => $provider['first_name'] . ' ' . $provider['last_name'],
+            /**'appointment_select_servicemode' => $select_servicemode['select_servicemode'],*/
             'appointment_start_date' => $appointment_start->format($date_format . ' ' . $time_format),
             'appointment_end_date' => $appointment_end->format($date_format . ' ' . $time_format),
             'appointment_timezone' => $timezones[empty($timezone) ? $provider['timezone'] : $timezone],
             'appointment_link' => $appointment_link_address->get(),
             'company_link' => $settings['company_link'],
             'company_name' => $settings['company_name'],
-            'customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
+            'customer_name' => $customer['last_name'] . ' ' . $customer['first_name'],
             'customer_email' => $customer['email'],
-            'customer_phone' => $customer['phone_number'],
-            'customer_address' => $customer['address'],
+            'customer_phone' => (array_key_exists('phone_number', $customer) ? $customer['phone_number'] : ''),
+            /** 'customer_address' => $customer['address'], */
+            'customer_readers_card' => $customer['readers_card'],
+            'customer_organization' => $customer['organization'],
+            'customer_notes' => $customer['notes'],
+            'customer_user' => $customer['user'],
+            'customer_questions' => $customer['questions'],
+            'customer_reservation' => $customer['reservation'],
+            'customer_select_servicemode' => $customer['select_servicemode'],
+            'customer_select_servicemodeoptions' => $customer['select_servicemodeoptions'],
+
+            
         ], TRUE);
 
         $mailer = $this->create_mailer();
@@ -159,8 +171,9 @@ class Email {
         $mailer->AddAddress($recipient_email->get());
         $mailer->Subject = $title->get();
         $mailer->Body = $html;
-        $mailer->addStringAttachment($ics_stream->get(), 'invitation.ics');
-
+/**        
+$mailer->addStringAttachment($ics_stream->get(), 'invitation.ics');
+*/
         if ( ! $mailer->Send())
         {
             throw new RuntimeException('Email could not been sent. Mailer Error (Line ' . __LINE__ . '): '
@@ -249,8 +262,17 @@ class Email {
             'customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
             'customer_email' => $customer['email'],
             'customer_phone' => $customer['phone_number'],
-            'customer_address' => $customer['address'],
+          /**  'customer_address' => $customer['address'], */
+            'customer_readers_card' => $customer['readers_card'],
+            'customer_organization' => $customer['organization'],
+            'customer_user' => $customer['user'],
+            'customer_questions' => $customer['questions'],
+            'customer_reservation' => $customer['reservation'],
+            'customer_select_servicemode' => $customer['select_servicemode'],
+            'customer_select_servicemodeoptions' => $customer['select_servicemodeoptions'],
+            'customer_notes' => $customer['notes'],
             'reason' => $reason->get(),
+            
         ], TRUE);
 
         $mailer = $this->create_mailer();

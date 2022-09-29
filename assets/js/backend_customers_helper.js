@@ -124,8 +124,15 @@
                 email: $('#email').val(),
                 phone_number: $('#phone-number').val(),
                 address: $('#address').val(),
+                readers_card: $('#readers-card').val(),
+                organization: $('#organization').val(),
+                user: $('#user').val(),
+                questions: $('#questions').val(),
+                reservation: $('#reservation').val(),
                 city: $('#city').val(),
                 zip_code: $('#zip-code').val(),
+                select_servicemode: $('#select-servicemode').val(),
+                select_servicemodeoptions: $('#select-servicemodeoptions').val(),
                 notes: $('#notes').val(),
                 timezone: $('#timezone').val(),
                 language: $('#language').val() || 'english'
@@ -288,8 +295,15 @@
         $('#email').val(customer.email);
         $('#phone-number').val(customer.phone_number);
         $('#address').val(customer.address);
+        $('#readers-card').val(customer.readers_card);
+        $('#organization').val(customer.organization);
+        $('#user').val(customer.user);
+        $('#questions').val(customer.questions);
+        $('#reservation').val(customer.reservation);
         $('#city').val(customer.city);
         $('#zip-code').val(customer.zip_code);
+        $('#select-servicemode').val(customer.select_servicemode);
+        $('#select-servicemodeoptions').val(customer.select_servicemodeoptions);
         $('#notes').val(customer.notes);
         $('#timezone').val(customer.timezone);
         $('#language').val(customer.language || 'english');

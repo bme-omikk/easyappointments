@@ -105,6 +105,7 @@ class Notifications {
                     $provider_message, $provider_link, new Email($provider['email']), new Text($ics_stream), $provider['timezone']);
             }
 
+
             // Notify admins
             $admins = $this->CI->admins_model->get_batch();
 

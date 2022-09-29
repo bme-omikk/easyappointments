@@ -186,6 +186,7 @@ window.BackendCalendarTableView = window.BackendCalendarTableView || {};
                 $dialog.find('#appointment-id').val(appointment.id);
                 $dialog.find('#select-service').val(appointment.id_services).trigger('change');
                 $dialog.find('#select-provider').val(appointment.id_users_provider);
+                // $dialog.find('#select-servicemode').val(appointmentselect_servicemode);
 
                 // Set the start and end datetime of the appointment.
                 var startDatetime = Date.parseExact(appointment.start_datetime, 'yyyy-MM-dd HH:mm:ss');
@@ -201,8 +202,15 @@ window.BackendCalendarTableView = window.BackendCalendarTableView || {};
                 $dialog.find('#email').val(customer.email);
                 $dialog.find('#phone-number').val(customer.phone_number);
                 $dialog.find('#address').val(customer.address);
+                $dialog.find('#readers-card').val(customer.readers_card);
+                $dialog.find('#organization').val(customer.organization);
+                $dialog.find('#user').val(customer.user);
+                $dialog.find('#questions').val(customer.questions);
+                $dialog.find('#reservation').val(customer.reservation);
                 $dialog.find('#city').val(customer.city);
                 $dialog.find('#zip-code').val(customer.zip_code);
+		$dialog.find('#select-servicemode').val(customer.select_servicemode);
+                $dialog.find('#select-servicemodeoptions').val(customer.select_servicemodeoptions);
                 $dialog.find('#appointment-location').val(appointment.location);
                 $dialog.find('#appointment-notes').val(appointment.notes);
                 $dialog.find('#customer-notes').val(customer.notes);
@@ -245,23 +253,23 @@ window.BackendCalendarTableView = window.BackendCalendarTableView || {};
             var data;
 
             // If id_role parameter exists the popover is an working plan exception.
-            if (lastFocusedEventData.data.workingPlanException) {
+            if (lastFocusedEventData.data.hasOwnProperty('id_roles')) {
                 // Do not display confirmation prompt.
                 url = GlobalVariables.baseUrl + '/index.php/backend_api/ajax_delete_working_plan_exception';
 
                 data = {
                     csrfToken: GlobalVariables.csrfToken,
                     working_plan_exception: lastFocusedEventData.start.format('YYYY-MM-DD'),
-                    provider_id: lastFocusedEventData.data.provider.id
+                    provider_id: lastFocusedEventData.data.id
                 };
 
                 $.post(url, data)
                     .done(function () {
                         $('#message-box').dialog('close');
 
-                        var workingPlanExceptions = JSON.parse(lastFocusedEventData.data.provider.settings.working_plan_exceptions);
+                        var workingPlanExceptions = JSON.parse(lastFocusedEventData.data.settings.working_plan_exceptions);
                         delete workingPlanExceptions[lastFocusedEventData.start.format('YYYY-MM-DD')];
-                        lastFocusedEventData.data.provider.settings.working_plan_exceptions = JSON.stringify(workingPlanExceptions);
+                        lastFocusedEventData.data.settings.working_plan_exceptions = JSON.stringify(workingPlanExceptions);
 
                         // Refresh calendar event items.
                         $('#select-filter-item').trigger('change');

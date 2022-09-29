@@ -145,6 +145,7 @@
                 mobile_number: $('#secretary-mobile-number').val(),
                 phone_number: $('#secretary-phone-number').val(),
                 address: $('#secretary-address').val(),
+                readers_card: $('#secretary-readers-card').val(),
                 city: $('#secretary-city').val(),
                 state: $('#secretary-state').val(),
                 zip_code: $('#secretary-zip-code').val(),
@@ -347,6 +348,7 @@
         $('#secretary-mobile-number').val(secretary.mobile_number);
         $('#secretary-phone-number').val(secretary.phone_number);
         $('#secretary-address').val(secretary.address);
+        $('#secretary-readers-card').val(secretary.readers_card);
         $('#secretary-city').val(secretary.city);
         $('#secretary-state').val(secretary.state);
         $('#secretary-zip-code').val(secretary.zip_code);

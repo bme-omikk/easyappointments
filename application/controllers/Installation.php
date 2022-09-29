@@ -66,7 +66,7 @@ class Installation extends EA_Controller {
             $admin = $this->input->post('admin');
             $company = $this->input->post('company');
 
-            if ( ! $this->migration->latest())
+            if ( ! $this->migration->current())
             {
                 throw new Exception($this->migration->error_string());
             }

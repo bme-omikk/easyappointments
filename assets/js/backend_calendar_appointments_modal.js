@@ -76,8 +76,15 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                 email: $dialog.find('#email').val(),
                 phone_number: $dialog.find('#phone-number').val(),
                 address: $dialog.find('#address').val(),
+                readers_card: $dialog.find('#readers-card').val(),
+                organization: $dialog.find('#organization').val(),
+                user: $dialog.find('#user').val(),
+                questions: $dialog.find('#questions').val(),
+                reservation: $dialog.find('#reservation').val(),
                 city: $dialog.find('#city').val(),
                 zip_code: $dialog.find('#zip-code').val(),
+                select_servicemode: $dialog.find('#select-servicemode').val(),
+		select_servicemodeoptions: $dialog.find('#select-servicemodeoptions').val(),
                 notes: $dialog.find('#customer-notes').val()
             };
 
@@ -215,8 +222,15 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                 $('#email').val(customer.email);
                 $('#phone-number').val(customer.phone_number);
                 $('#address').val(customer.address);
+                $('#readers-card').val(customer.readers_card);
+                $('#organization').val(customer.organization);
+                $('#user').val(customer.user);
+                $('#questions').val(customer.questions);
+                $('#reservation').val(customer.reservation);
                 $('#city').val(customer.city);
                 $('#zip-code').val(customer.zip_code);
+                $('#select-servicemode').val(customer.select_servicemode);
+                $('#select-servicemodeoptions').val(customer.select_servicemodeoptions);
                 $('#customer-notes').val(customer.notes);
             }
 
@@ -280,7 +294,14 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                                 || customer.email.toLowerCase().indexOf(key) !== -1
                                 || customer.phone_number.toLowerCase().indexOf(key) !== -1
                                 || customer.address.toLowerCase().indexOf(key) !== -1
+                                || customer.readers_card.toLowerCase().indexOf(key) !== -1
+                                || customer.organization.toLowerCase().indexOf(key) !== -1
+                                || customer.user.toLowerCase().indexOf(key) !== -1
+                                || customer.questions.toLowerCase().indexOf(key) !== -1
+                                || customer.reservation.toLowerCase().indexOf(key) !== -1
                                 || customer.city.toLowerCase().indexOf(key) !== -1
+                                || customer.select_servicemode.toLowerCase().indexOf(key) !== -1
+				|| customer.select_servicemodeoptions.toLowerCase().indexOf(key) !== -1
                                 || customer.zip_code.toLowerCase().indexOf(key) !== -1
                                 || customer.notes.toLowerCase().indexOf(key) !== -1) {
                                 $('<div/>', {
@@ -296,6 +317,7 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                     });
             }, 1000);
         });
+
 
         /**
          * Event: Selected Service "Change"
@@ -351,7 +373,7 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
          */
         $('#new-customer').on('click', function () {
             $('#manage-appointment').find('#customer-id, #first-name, #last-name, #email, '
-                + '#phone-number, #address, #city, #zip-code, #customer-notes').val('');
+                + '#phone-number, #address, #readers-card, #city, #zip-code, #select-servicemode, #select-servicemodeoptions, #customer-notes').val('');
         });
     }
 

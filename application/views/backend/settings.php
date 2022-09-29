@@ -415,7 +415,7 @@
                             <label for="email"><?= lang('email') ?> *</label>
                             <input id="email" class="form-control required">
                         </div>
-
+<!--
                         <div class="form-group">
                             <label for="phone-number"><?= lang('phone_number') ?> *</label>
                             <input id="phone-number" class="form-control required">
@@ -425,12 +425,31 @@
                             <label for="mobile-number"><?= lang('mobile_number') ?></label>
                             <input id="mobile-number" class="form-control">
                         </div>
-
                         <div class="form-group">
                             <label for="address"><?= lang('address') ?></label>
                             <input id="address" class="form-control">
                         </div>
 
+			<div class="form-group">
+                            <label for="readers-card"><?= lang('readers_card') ?></label>
+                            <input id="readers-card" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization"><?= lang('organization') ?></label>
+                            <input id="organization" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                                <label for="user">
+                                    <?= lang('user') ?>
+                                 </label>
+			         <select id="user" class="form-control">
+                                    <option value="<?= lang('author') ?>"><?= lang('author') ?></option>
+			            <option value="<?= lang('administrator') ?>"><?= lang('administrator') ?></option>
+                                 </select>
+    		            </div>
+-->                 
                         <div class="form-group">
                             <label for="city"><?= lang('city') ?></label>
                             <input id="city" class="form-control">
@@ -445,11 +464,37 @@
                             <label for="zip-code"><?= lang('zip_code') ?></label>
                             <input id="zip-code" class="form-control">
                         </div>
+<!--
+  			<div class="form-group">
+                            <label for="select-servicemode"><?= lang('select_servicemode') ?></label>
+                            <input id="select-servicemode" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                             <label for="select-servicemodeoptions">
+                               <strong><?= lang('select_servicemodeoptions') ?></strong>
+                             </label>
+                             <select id="select-servicemodeoptions" class="form-control">
+                               <option value="<?= lang('individual') ?>" selected><?= lang('individual') ?></option>
+                               <option value="<?= lang('group') ?>"<?= lang('group') ?></option>
+  			     </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reservation"><?= lang('reservation') ?></label>
+                            <textarea id="reservation" class="form-control" rows="3"></textarea>
+                        </div>
 
                         <div class="form-group">
                             <label for="notes"><?= lang('notes') ?></label>
                             <textarea id="notes" class="form-control" rows="3"></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label for="questions"><?= lang('questions') ?></label>
+                            <textarea id="questions" class="form-control" rows="3"></textarea>
+                        </div>
+-->
                     </fieldset>
 
                     <fieldset class="col-12 col-sm-6 miscellaneous-wrapper">

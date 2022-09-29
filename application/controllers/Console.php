@@ -82,7 +82,7 @@ class Console extends EA_Controller {
             show_error($this->migration->error_string());
         }
 
-        if ($this->migration->latest() === FALSE)
+        if ($this->migration->current() === FALSE)
         {
             show_error($this->migration->error_string());
         }

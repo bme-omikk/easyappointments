@@ -57,7 +57,7 @@ window.FrontendBook = window.FrontendBook || {};
         defaultEventHandlers = defaultEventHandlers || true;
         manageMode = manageMode || false;
 
-        if (GlobalVariables.displayCookieNotice && window.cookieconsent) {
+        if (GlobalVariables.displayCookieNotice) {
             cookieconsent.initialise({
                 palette: {
                     popup: {
@@ -128,6 +128,11 @@ window.FrontendBook = window.FrontendBook || {};
                 FrontendBookApi.getUnavailableDates($('#select-provider').val(), $('#select-service').val(),
                     currentDate.toString('yyyy-MM-dd'));
             }
+        });
+
+        $('#service-duration').change(function() {
+            FrontendBookApi.getAvailableHours($('#select-date').datepicker('getDate').toString('yyyy-MM-dd'));
+            FrontendBook.updateConfirmFrame();
         });
 
         $('#select-timezone').val(Intl.DateTimeFormat().resolvedOptions().timeZone);
@@ -232,12 +237,52 @@ window.FrontendBook = window.FrontendBook || {};
             });
 
             // Add the "Any Provider" entry.
-            if ($('#select-provider option').length > 1 && GlobalVariables.displayAnyProvider === '1') {
-                $('#select-provider').prepend(new Option('- ' + EALang.any_provider + ' -', 'any-provider', true, true));
+            if ($('#select-provider option').length >= 1 && GlobalVariables.displayAnyProvider === '1') {
+                $('#select-provider').append(new Option('- ' + EALang.any_provider + ' -', 'any-provider', true, true));
             }
 
             FrontendBookApi.getUnavailableDates($('#select-provider').val(), $(this).val(),
                 $('#select-date').datepicker('getDate').toString('yyyy-MM-dd'));
+
+            // OMIKK: show/hide additional options based on the selected service
+            let selected_service = this.options[this.selectedIndex].value;
+            if (selected_service == 5 || selected_service == 7) {
+                $('#select-servicemode').parent().css('display', 'block');
+                $('#select-servicemodeoptions').parent().css('display', 'block');
+                $('#questions').parent().css('display', 'block');
+                $('#notes').parent().css('display', 'none');
+                $('#reservation').parent().css('display', 'none');
+                $('#select-provider').prev().empty();
+                $('#select-provider').prev().append('<strong>' + EALang.provider_subject  + '</strong>');
+                $('#readers-card').parent().css('display', 'none');
+                 if ($('#readers-card').val() == '') $('#readers-card').val(' ');
+            }
+            else {
+                $('#select-servicemode').parent().css('display', 'none');
+                $('#select-servicemodeoptions').parent().css('display', 'none');
+                $('#questions').parent().css('display', 'none');
+                $('#notes').parent().css('display', 'block');
+                $('#reservation').parent().css('display', 'block');
+                $('#select-provider').prev().empty();
+                $('#select-provider').prev().append('<strong>' + EALang.provider_room  + '</strong>');
+                $('#readers-card').parent().css('display', 'block');
+                $('#user').parent().css('display', 'none');
+                 if ($('#readers-card').val() == '') $('#readers-card').val('');
+            }
+
+            if (selected_service == 7) {
+                $('#organization').parent().css('display', 'block');
+                $('#user').parent().css('display', 'block');
+                
+            }
+            else {
+                
+                $('#organization').parent().css('display', 'none');
+                $('#user').parent().css('display', 'none');
+            }
+
+
+
             FrontendBook.updateConfirmFrame();
             updateServiceDescription(serviceId);
         });
@@ -283,6 +328,7 @@ window.FrontendBook = window.FrontendBook || {};
                             first_name: $('#first-name').val(),
                             last_name: $('#last-name').val(),
                             email: $('#email').val(),
+                            readers_card: $('#readers-card').val(),
                             type: 'terms-and-conditions'
                         };
 
@@ -298,6 +344,7 @@ window.FrontendBook = window.FrontendBook || {};
                             first_name: $('#first-name').val(),
                             last_name: $('#last-name').val(),
                             email: $('#email').val(),
+                            readers_card: $('#readers-card').val(),
                             type: 'privacy-policy'
                         };
 
@@ -524,6 +571,8 @@ window.FrontendBook = window.FrontendBook || {};
 
         $('#appointment-details').empty();
 
+        // OMIKK: to change the text of the provider name baes on the selected service
+        let selected_service = $('#select-service').val();
         $('<div/>', {
             'html': [
                 $('<h4/>', {
@@ -536,17 +585,24 @@ window.FrontendBook = window.FrontendBook || {};
                         }),
                         $('<br/>'),
                         $('<span/>', {
-                            'text': EALang.provider + ': ' + $('#select-provider option:selected').text()
+                            'text': (selected_service==5 || selected_service==7 ? EALang.provider_subject : EALang.provider_room) + ': ' + $('#select-provider option:selected').text()
                         }),
                         $('<br/>'),
-                        $('<span/>', {
+                        (selected_service!=2 ? $('<span/>', {'text':  EALang.select_servicemode + ': ' + $('#select-servicemode option:selected').text()}) : ''),
+                        (selected_service!=2 ? $('<br/>') : ''),
+                       
+                        (selected_service!=2 ? $('<span/>', {'text':  EALang.select_servicemodeoptions + ': ' + $('#select-servicemodeoptions option:selected').text()}) : ''),
+                        (selected_service!=2 ? $('<br/>') : ''),
+			$('<span/>', {
                             'text': EALang.start + ': ' + selectedDate + ' ' + $('.selected-hour').text()
                         }),
                         $('<br/>'),
+/**
                         $('<span/>', {
                             'text': EALang.timezone + ': ' + $('#select-timezone option:selected').text()
                         }),
                         $('<br/>'),
+*/
                         $('<span/>', {
                             'text': EALang.price + ': ' + servicePrice + ' ' + serviceCurrency,
                             'prop': {
@@ -565,8 +621,17 @@ window.FrontendBook = window.FrontendBook || {};
         var phoneNumber = GeneralFunctions.escapeHtml($('#phone-number').val());
         var email = GeneralFunctions.escapeHtml($('#email').val());
         var address = GeneralFunctions.escapeHtml($('#address').val());
+        var readersCard = GeneralFunctions.escapeHtml($('#readers-card').val());
+        var organization = GeneralFunctions.escapeHtml($('#organization').val());
+        var user = GeneralFunctions.escapeHtml($('#user').val());
+        var questions = GeneralFunctions.escapeHtml($('#questions').val());
+        var notes = GeneralFunctions.escapeHtml($('#notes').val());
+        var reservation = GeneralFunctions.escapeHtml($('#reservation').val());
         var city = GeneralFunctions.escapeHtml($('#city').val());
         var zipCode = GeneralFunctions.escapeHtml($('#zip-code').val());
+        var selectServicemode = GeneralFunctions.escapeHtml($('#select-servicemode').val());
+        var selectServicemodeoptions = GeneralFunctions.escapeHtml($('#select-servicemodeoptions').val());
+        
 
         $('#customer-details').empty();
 
@@ -578,12 +643,12 @@ window.FrontendBook = window.FrontendBook || {};
                 $('<p/>', {
                     'html': [
                         $('<span/>', {
-                            'text': EALang.customer + ': ' + firstName + ' ' + lastName
+                            'text': EALang.name + ': ' + lastName + ' ' + firstName
                         }),
-                        $('<br/>'),
+                        /*$('<br/>'),
                         $('<span/>', {
                             'text': EALang.phone_number + ': ' + phoneNumber
-                        }),
+                        }),*/
                         $('<br/>'),
                         $('<span/>', {
                             'text': EALang.email + ': ' + email
@@ -592,7 +657,31 @@ window.FrontendBook = window.FrontendBook || {};
                         $('<span/>', {
                             'text': address ? EALang.address + ': ' + address : ''
                         }),
-                        $('<br/>'),
+                        (address ? $('<br/>') : ''),
+                        $('<span/>', {
+                            'text': readersCard!=' ' && readersCard!=''  ? EALang.readers_card + ': ' + readersCard : ''
+                        }),
+                        (readersCard!=' ' && readersCard!='' ? $('<br/>') : ''),
+                        $('<span/>', {
+                            'text': organization ? EALang.organization + ': ' + organization :  ''
+                        }),
+                        (organization ? $('<br/>') : ''),
+                        $('<span/>', {
+                            'text': user ? EALang.user + ': ' + user : ''
+                        }),
+                        (user ? $('<br/>') : ''),
+                        $('<span/>', {
+                            'text': questions ? EALang.questions + ': ' + questions : ''
+                        }),
+                        (questions ? $('<br/>') : ''),
+                        $('<span/>', {
+                            'text': reservation ? EALang.reservation + ': ' + reservation : ''
+                        }),
+                        (reservation ? $('<br/>') : ''),
+                        $('<span/>', {
+                            'text': notes ? EALang.notes + ': ' + notes : ''
+                        }),
+                        (notes ? $('<br/>') : ''),
                         $('<span/>', {
                             'text': city ? EALang.city + ': ' + city : ''
                         }),
@@ -617,9 +706,20 @@ window.FrontendBook = window.FrontendBook || {};
             email: $('#email').val(),
             phone_number: $('#phone-number').val(),
             address: $('#address').val(),
+            readers_card: $('#readers-card').val(),
             city: $('#city').val(),
+            //city: $('#select-servicemode').val(),
+            organization: $('#organization').val(),
+            user: $('#user').val(),
+            questions: $('#questions').val(),
+            reservation: $('#reservation').val(),
+            select_servicemode: $('#select-servicemode').val(),
+            select_servicemodeoptions: $('#select-servicemodeoptions').val(),
+            notes: $('#notes').val(),
             zip_code: $('#zip-code').val(),
             timezone: $('#select-timezone').val()
+            
+	    
         };
 
         data.appointment = {
@@ -629,7 +729,8 @@ window.FrontendBook = window.FrontendBook || {};
             notes: $('#notes').val(),
             is_unavailable: false,
             id_users_provider: $('#select-provider').val(),
-            id_services: $('#select-service').val()
+            id_services: $('#select-service').val(),
+            // select_servicemode: $('#select-servicemode').val()
         };
 
         data.manage_mode = FrontendBook.manageMode;
@@ -663,7 +764,7 @@ window.FrontendBook = window.FrontendBook || {};
         var endDatetime;
 
         if (service.duration && startDatetime) {
-            endDatetime = startDatetime.add({'minutes': parseInt(service.duration)});
+            endDatetime = startDatetime.add({'minutes': parseInt($('#service-duration').val())});
         } else {
             endDatetime = new Date();
         }
@@ -686,6 +787,7 @@ window.FrontendBook = window.FrontendBook || {};
             // Select Service & Provider
             $('#select-service').val(appointment.id_services).trigger('change');
             $('#select-provider').val(appointment.id_users_provider);
+           // $('#select-servicemode').val(appointment.select_servicemode);
 
             // Set Appointment Date
             $('#select-date').datepicker('setDate',
@@ -698,8 +800,18 @@ window.FrontendBook = window.FrontendBook || {};
             $('#email').val(customer.email);
             $('#phone-number').val(customer.phone_number);
             $('#address').val(customer.address);
-            $('#city').val(customer.city);
+            $('#readers-card').val(customer.readers_card);
+            $('#organization').val(customer.organization);
+            $('#user').val(customer.user);
+            $('#questions').val(customer.questions);
+            $('#reservation').val(customer.reservation);
+            //$('#city').val(customer.city);
+            //$('#select-servicemode').val(customer.city);
+            $('#select-servicemode').val(customer.select_servicemode);
+            $('#select-servicemodeoptions').val(customer.select_servicemodeoptions);
             $('#zip-code').val(customer.zip_code);
+            $('#notes').val(customer.notes);
+
             if (customer.timezone) {
                 $('#select-timezone').val(customer.timezone)
             }

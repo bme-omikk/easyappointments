@@ -111,6 +111,8 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                 $dialog.find('#appointment-id').val(appointment.id);
                 $dialog.find('#select-service').val(appointment.id_services).trigger('change');
                 $dialog.find('#select-provider').val(appointment.id_users_provider);
+		// $dialog.find('#select-servicemode').val(appointment.select_servicemode);
+                
 
                 // Set the start and end datetime of the appointment.
                 startDatetime = Date.parseExact(appointment.start_datetime, 'yyyy-MM-dd HH:mm:ss');
@@ -126,8 +128,15 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                 $dialog.find('#email').val(customer.email);
                 $dialog.find('#phone-number').val(customer.phone_number);
                 $dialog.find('#address').val(customer.address);
+                $dialog.find('#readers-card').val(customer.readers_card);
+                $dialog.find('#organization').val(customer.organization);
+                $dialog.find('#user').val(customer.user);
+                $dialog.find('#questions').val(customer.questions);
+                $dialog.find('#reservation').val(customer.reservation);
                 $dialog.find('#city').val(customer.city);
                 $dialog.find('#zip-code').val(customer.zip_code);
+                $dialog.find('#select-servicemode').val(customer.select_servicemode);
+                $dialog.find('#select-servicemodeoptions').val(customer.select_servicemodeoptions);
                 $dialog.find('#appointment-location').val(appointment.location);
                 $dialog.find('#appointment-notes').val(appointment.notes);
                 $dialog.find('#customer-notes').val(customer.notes);
@@ -516,6 +525,8 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                 ? 'mr-2' : 'd-none';
             displayDelete = (GlobalVariables.user.privileges.appointments.delete === true)
                 ? 'mr-2' : 'd-none';
+ if(event.data.service.name == 'Teremfoglalás / Room reservation'){ 
+
 
             $html = $('<div/>', {
                 'html': [
@@ -536,7 +547,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                         'text': GeneralFunctions.formatDate(event.end.format('YYYY-MM-DD HH:mm:ss'), GlobalVariables.dateFormat, true)
                     }),
                     $('<br/>'),
-
+/** 
                     $('<strong/>', {
                         'class': 'd-inline-block mr-2',
                         'text': EALang.timezone
@@ -545,7 +556,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                         'text': GlobalVariables.timezones[event.data.provider.timezone]
                     }),
                     $('<br/>'),
-
+*/
                     $('<strong/>', {
                         'class': 'd-inline-block mr-2',
                         'text': EALang.service
@@ -554,10 +565,20 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                         'text': event.data.service.name
                     }),
                     $('<br/>'),
-
+/** 
                     $('<strong/>', {
                         'class': 'd-inline-block mr-2',
-                        'text': EALang.provider
+                        'text': EALang.city
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.city
+                    }),
+		    $('<br/>'),
+*/
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.provider_room
                     }),
                     GeneralFunctions.renderMapIcon(event.data.provider),
                     $('<span/>', {
@@ -589,6 +610,27 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
 
                     $('<strong/>', {
                         'class': 'd-inline-block mr-2',
+                        'text': EALang.readers_card
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.readers_card
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.reservation
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.reservation!='' ? event.data.customer.reservation : '-'
+                    }),
+                    $('<br/>'),
+
+
+/**                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
                         'text': EALang.phone
                     }),
                     GeneralFunctions.renderPhoneIcon(event.data.customer.phone_number),
@@ -597,13 +639,14 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                         'text': event.data.customer.phone_number
                     }),
                     $('<br/>'),
-
+*/
                     $('<strong/>', {
                         'text': EALang.notes
                     }),
                     $('<span/>', {
                         'text': getEventNotes(event)
                     }),
+
                     $('<br/>'),
 
                     $('<hr/>'),
@@ -647,8 +690,384 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                         ]
                     })
                 ]
-            });
-        }
+            }) }
+
+if(event.data.service.name == 'Információ & konzultáció / Information & consultation'){
+
+
+            $html = $('<div/>', {
+                'html': [
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.start
+                    }),
+                    $('<span/>', {
+                        'text': GeneralFunctions.formatDate(event.start.format('YYYY-MM-DD HH:mm:ss'), GlobalVariables.dateFormat, true)
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.end
+                    }),
+                    $('<span/>', {
+                        'text': GeneralFunctions.formatDate(event.end.format('YYYY-MM-DD HH:mm:ss'), GlobalVariables.dateFormat, true)
+                    }),
+                    $('<br/>'),
+/** 
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.timezone
+                    }),
+                    $('<span/>', {
+                        'text': GlobalVariables.timezones[event.data.provider.timezone]
+                    }),
+                    $('<br/>'),
+*/
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.service
+                    }),
+                    $('<span/>', {
+                        'text': event.data.service.name
+                    }),
+                    $('<br/>'),
+/** 
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.city
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.city
+                    }),
+		    $('<br/>'),
+*/
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.provider_subject
+                    }),
+                    GeneralFunctions.renderMapIcon(event.data.provider),
+                    $('<span/>', {
+                        'text': event.data.provider.first_name + ' ' + event.data.provider.last_name
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.select_servicemode
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.select_servicemode
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.select_servicemodeoptions
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.select_servicemodeoptions
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.customer
+                    }),
+
+                    GeneralFunctions.renderMapIcon(event.data.customer),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.first_name + ' ' + event.data.customer.last_name
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.email
+                    }),
+                    GeneralFunctions.renderMailIcon(event.data.customer.email),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.email
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.questions
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.questions!='' ? event.data.customer.questions : '-'
+                    }),
+                    $('<br/>'),
+
+
+/**                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.phone
+                    }),
+                    GeneralFunctions.renderPhoneIcon(event.data.customer.phone_number),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.phone_number
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'text': EALang.notes
+                    }),
+                    $('<span/>', {
+                        'text': getEventNotes(event)
+                    }),
+
+                    $('<br/>'),
+*/
+                    $('<hr/>'),
+
+                    $('<div/>', {
+                        'class': 'd-flex justify-content-center',
+                        'html': [
+                            $('<button/>', {
+                                'class': 'close-popover btn btn-outline-secondary mr-2',
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-ban mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.close
+                                    })
+                                ]
+                            }),
+                            $('<button/>', {
+                                'class': 'delete-popover btn btn-outline-secondary ' + displayDelete,
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-trash-alt mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.delete
+                                    })
+                                ]
+                            }),
+                            $('<button/>', {
+                                'class': 'edit-popover btn btn-primary ' + displayEdit,
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-edit mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.edit
+                                    })
+                                ]
+                            })
+                        ]
+                    })
+                ]
+            }) }
+
+if(event.data.service.name == 'Publikációmenedzsment/ Publication management'){
+
+
+            $html = $('<div/>', {
+                'html': [
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.start
+                    }),
+                    $('<span/>', {
+                        'text': GeneralFunctions.formatDate(event.start.format('YYYY-MM-DD HH:mm:ss'), GlobalVariables.dateFormat, true)
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.end
+                    }),
+                    $('<span/>', {
+                        'text': GeneralFunctions.formatDate(event.end.format('YYYY-MM-DD HH:mm:ss'), GlobalVariables.dateFormat, true)
+                    }),
+                    $('<br/>'),
+/** 
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.timezone
+                    }),
+                    $('<span/>', {
+                        'text': GlobalVariables.timezones[event.data.provider.timezone]
+                    }),
+                    $('<br/>'),
+*/
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.service
+                    }),
+                    $('<span/>', {
+                        'text': event.data.service.name
+                    }),
+                    $('<br/>'),
+/** 
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.city
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.city
+                    }),
+		    $('<br/>'),
+*/
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.provider_subject
+                    }),
+                    GeneralFunctions.renderMapIcon(event.data.provider),
+                    $('<span/>', {
+                        'text': event.data.provider.first_name + ' ' + event.data.provider.last_name
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.select_servicemode
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.select_servicemode
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.select_servicemodeoptions
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.select_servicemodeoptions
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.customer
+                    }),
+                    GeneralFunctions.renderMapIcon(event.data.customer),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.first_name + ' ' + event.data.customer.last_name
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.email
+                    }),
+                    GeneralFunctions.renderMailIcon(event.data.customer.email),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.email
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.organization
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.organization!='' ? event.data.customer.organization : '-'
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.user
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.user
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text':  EALang.questions
+                    }),
+                    $('<span/>', {
+                        'class':  'd-inline-block ml-1',
+                        'text': event.data.customer.questions!='' ? event.data.customer.questions : '-'
+                    }),
+                    $('<br/>'),
+
+
+/**                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.phone
+                    }),
+                    GeneralFunctions.renderPhoneIcon(event.data.customer.phone_number),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.phone_number
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'text': EALang.notes
+                    }),
+                    $('<span/>', {
+                        'text': getEventNotes(event)
+                    }),
+
+                    $('<br/>'),
+*/
+                    $('<hr/>'),
+
+                    $('<div/>', {
+                        'class': 'd-flex justify-content-center',
+                        'html': [
+                            $('<button/>', {
+                                'class': 'close-popover btn btn-outline-secondary mr-2',
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-ban mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.close
+                                    })
+                                ]
+                            }),
+                            $('<button/>', {
+                                'class': 'delete-popover btn btn-outline-secondary ' + displayDelete,
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-trash-alt mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.delete
+                                    })
+                                ]
+                            }),
+                            $('<button/>', {
+                                'class': 'edit-popover btn btn-primary ' + displayEdit,
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-edit mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.edit
+                                    })
+                                ]
+                            })
+                        ]
+                    })
+                ]
+            }) }
+
+}
 
         $(jsEvent.target).popover({
             placement: 'top',
@@ -1599,6 +2018,8 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
             $dialog.find('#appointment-id').val(appointment.id);
             $dialog.find('#select-service').val(appointment.id_services).trigger('change');
             $dialog.find('#select-provider').val(appointment.id_users_provider);
+            // $dialog.find('#select-servicemode').val(appointment.select_servicemode);
+            
 
             // Set the start and end datetime of the appointment.
             var startDatetime = Date.parseExact(appointment.start_datetime, 'yyyy-MM-dd HH:mm:ss');
@@ -1614,8 +2035,15 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
             $dialog.find('#email').val(customer.email);
             $dialog.find('#phone-number').val(customer.phone_number);
             $dialog.find('#address').val(customer.address);
+            $dialog.find('#readers-card').val(customer.readers_card);
+            $dialog.find('#organization').val(customer.organization);
+            $dialog.find('#user').val(customer.user);
+            $dialog.find('#questions').val(customer.questions);
+            $dialog.find('#reservation').val(customer.reservation);
             $dialog.find('#city').val(customer.city);
             $dialog.find('#zip-code').val(customer.zip_code);
+            $dialog.find('#select-servicemode').val(customer.select_servicemode);
+            $dialog.find('#select-servicemodeoptions').val(customer.select_servicemodeoptions);
             $dialog.find('#appointment-location').val(appointment.location);
             $dialog.find('#appointment-notes').val(appointment.notes);
             $dialog.find('#customer-notes').val(customer.notes);

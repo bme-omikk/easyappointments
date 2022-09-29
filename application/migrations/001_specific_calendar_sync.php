@@ -295,6 +295,11 @@ class Migration_Specific_calendar_sync extends CI_Migration {
                 'constraint' => '256',
                 'null' => TRUE
             ],
+            'readers_card' => [
+                'type' => 'VARCHAR',
+                'constraint' => '256',
+                'null' => TRUE
+            ],
             'city' => [
                 'type' => 'VARCHAR',
                 'constraint' => '256',

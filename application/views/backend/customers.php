@@ -128,13 +128,37 @@
                         <input id="phone-number" class="form-control
                             <?= $require_phone_number === '1' ? 'required' : '' ?>">
                     </div>
-
+<!--
                     <div class="form-group">
                         <label class="control-label" for="address">
                             <?= lang('address') ?>
                         </label>
                         <input id="address" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="readers-card">
+                            <?= lang('readers_card') ?>
+                        </label>
+                        <input id="readers-card" class="form-control">
+                    </div>
+
+                            <div class="form-group">
+                                <label for="organization" class="control-label">
+                                    <?= lang('organization') ?>
+                                </label>
+                                <input type="text" id="organization" class="form-control" maxlength="120"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="user">
+                                    <?= lang('user') ?>
+                                 </label>
+			         <select id="user" class="form-control">
+                                    <option value="author"><?= lang('author') ?></option>
+			            <option value="administrator"><?= lang('administrator') ?></option>
+                                 </select>
+    		            </div>
 
                     <div class="form-group">
                         <label class="control-label" for="city">
@@ -151,6 +175,27 @@
                         <input id="zip-code" class="form-control">
                     </div>
 
+                            <div class="form-group">
+                                <label class="control-label" for="zip-code">
+                                 <?= lang('reservation') ?>
+                                </label>
+                                <input id="reservation" class="form-control" maxlength="120"/>
+          		     </div>
+
+                            <div class="form-group">
+                                <label for="notes" class="control-label">
+                                    <?= lang('notes') ?>
+                                </label>
+                                <textarea id="notes" maxlength="500" class="form-control" rows="1"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="questions" class="control-label">
+                                    <?= lang('questions') ?>
+                                </label>
+                                <textarea id="questions" maxlength="500" class="form-control" rows="1"></textarea>
+                            </div>
+-->
                     <div class="form-group">
                         <label for="language">
                             <?= lang('language') ?>
@@ -166,7 +211,24 @@
                         </label>
                         <?= render_timezone_dropdown('id="timezone" class="form-control required"') ?>
                     </div>
+<!--
+                   <div class="form-group">
+                        <label class="control-label" for="select-servicemode">
+                            <?= lang('select_servicemode') ?>
+                        </label>
+                        <input id="select-servicemode" class="form-control">
+                    </div>
 
+                    <div class="form-group">
+                        <label for="select-servicemodeoptions">
+                          <strong><?= lang('select_servicemodeoptions') ?></strong>
+                        </label>
+                        <select id="select-servicemodeoptions" class="form-control">
+                          <option value="<?= lang('individual') ?>" selected><?= lang('individual') ?></option>
+                          <option value="<?= lang('group') ?>"<?= lang('group') ?></option>
+  			</select>
+                    </div>
+-->
                     <div class="form-group">
                         <label class="control-label" for="notes">
                             <?= lang('notes') ?>

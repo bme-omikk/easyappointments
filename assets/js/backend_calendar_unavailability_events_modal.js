@@ -110,7 +110,9 @@ window.BackendCalendarUnavailabilityEventsModal = window.BackendCalendarUnavaila
 
             if ($('.calendar-view').length === 0) {
                 $dialog.find('#unavailable-provider')
-                    .val($('#select-filter-item').val());
+                    .val($('#select-filter-item').val())
+                    .closest('.form-group')
+                    .hide();
             }
 
             $dialog.find('#unavailable-start').val(GeneralFunctions.formatDate(start, GlobalVariables.dateFormat, true));

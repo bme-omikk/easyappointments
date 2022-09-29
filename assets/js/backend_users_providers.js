@@ -148,6 +148,7 @@
                 mobile_number: $('#provider-mobile-number').val(),
                 phone_number: $('#provider-phone-number').val(),
                 address: $('#provider-address').val(),
+                readers_card: $('#provider-readers-card').val(),
                 city: $('#provider-city').val(),
                 state: $('#provider-state').val(),
                 zip_code: $('#provider-zip-code').val(),
@@ -385,6 +386,7 @@
         $('#provider-mobile-number').val(provider.mobile_number);
         $('#provider-phone-number').val(provider.phone_number);
         $('#provider-address').val(provider.address);
+        $('#provider-readers-card').val(provider.readers_card);
         $('#provider-city').val(provider.city);
         $('#provider-state').val(provider.state);
         $('#provider-zip-code').val(provider.zip_code);
