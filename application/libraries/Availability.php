@@ -50,11 +50,13 @@ class Availability {
      *
      * @throws Exception
      */
-    public function get_available_hours($date, $service, $provider, $exclude_appointment_id = NULL)
+    // omikk-customizations-review
+    public function get_available_hours($date, $service, $provider, $exclude_appointment_id = NULL, $selected_duration = NULL)
     {
         $available_periods = $this->get_available_periods($date, $provider, $exclude_appointment_id);
 
-        $available_hours = $this->generate_available_hours($date, $service, $available_periods);
+        // omikk-customizations-review
+        $available_hours = $this->generate_available_hours($date, $service, $available_periods, $selected_duration);
 
         if ($service['attendants_number'] > 1)
         {
@@ -292,10 +294,12 @@ class Availability {
      *
      * @throws Exception
      */
+    // omikk-customizations-review
     protected function generate_available_hours(
         $date,
         $service,
-        $empty_periods
+        $empty_periods,
+        $selected_duration
     )
     {
         $available_hours = [];
@@ -304,12 +308,18 @@ class Availability {
         {
             $start_hour = new DateTime($date . ' ' . $period['start']);
             $end_hour = new DateTime($date . ' ' . $period['end']);
-            $interval = $service['availabilities_type'] === AVAILABILITIES_TYPE_FIXED ? (int)$service['duration'] : 15;
+
+            // omikk-customizations-review
+            if ($selected_duration === NULL) {
+                $selected_duration = $service['duration'];
+            }
+            $interval = $service['availabilities_type'] === AVAILABILITIES_TYPE_FIXED ? (int)$selected_duration : 15;
 
             $current_hour = $start_hour;
             $diff = $current_hour->diff($end_hour);
 
-            while (($diff->h * 60 + $diff->i) >= (int)$service['duration'] && $diff->invert === 0)
+            // omikk-customizations-review
+            while (($diff->h * 60 + $diff->i) >= (int)$selected_duration && $diff->invert === 0)
             {
                 $available_hours[] = $current_hour->format('H:i');
                 $current_hour->add(new DateInterval('PT' . $interval . 'M'));

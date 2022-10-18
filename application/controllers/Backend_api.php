@@ -551,14 +551,22 @@ class Backend_api extends EA_Controller {
             $key = $this->db->escape_str($this->input->post('key'));
             $key = strtoupper($key);
 
+            // omikk-customizations-review
             $where =
                 '(first_name LIKE upper("%' . $key . '%") OR ' .
                 'last_name  LIKE upper("%' . $key . '%") OR ' .
                 'email LIKE upper("%' . $key . '%") OR ' .
                 'phone_number LIKE upper("%' . $key . '%") OR ' .
                 'address LIKE upper("%' . $key . '%") OR ' .
+                'readers_card LIKE upper("%' . $key . '%") OR ' .
+                'organization LIKE upper("%' . $key . '%") OR ' .
+                'user LIKE upper("%' . $key . '%") OR ' .
+                'questions LIKE upper("%' . $key . '%") OR ' .
+                'reservation LIKE upper("%' . $key . '%") OR ' .
                 'city LIKE upper("%' . $key . '%") OR ' .
                 'zip_code LIKE upper("%' . $key . '%") OR ' .
+                'select_servicemode LIKE upper("%' . $key . '%") OR ' .
+                'select_servicemodeoptions LIKE upper("%' . $key . '%") OR ' .
                 'notes LIKE upper("%' . $key . '%"))';
 
             $order_by = 'first_name ASC, last_name ASC';
@@ -1125,10 +1133,17 @@ class Backend_api extends EA_Controller {
 
             $key = $this->db->escape_str($this->input->post('key'));
 
+            // omikk-customizations-review
             $where =
                 '(first_name LIKE "%' . $key . '%" OR last_name LIKE "%' . $key . '%" ' .
                 'OR email LIKE "%' . $key . '%" OR mobile_number LIKE "%' . $key . '%" ' .
                 'OR phone_number LIKE "%' . $key . '%" OR address LIKE "%' . $key . '%" ' .
+                'OR readers_card LIKE "%' . $key . '%" OR city LIKE "%' . $key . '%" '.
+                'OR organization LIKE "%' . $key . '%" OR user LIKE "%' . $key . '%" '.
+                'OR questions LIKE "%' . $key . '%" OR reservation LIKE "%' . $key . '%" '.
+                'OR state LIKE "%' . $key . '%" OR zip_code LIKE "%' . $key . '%" '.
+                'OR notes LIKE "%' . $key . '%" OR select_servicemode LIKE "%' . $key . '%" '.
+                'OR select_servicemodeoptions LIKE "%' . $key . '%")';
                 'OR city LIKE "%' . $key . '%" OR state LIKE "%' . $key . '%" ' .
                 'OR zip_code LIKE "%' . $key . '%" OR notes LIKE "%' . $key . '%")';
 
@@ -1233,10 +1248,18 @@ class Backend_api extends EA_Controller {
 
             $key = $this->db->escape_str($this->input->post('key'));
 
+            // omikk-customizations-review
             $where =
                 '(first_name LIKE "%' . $key . '%" OR last_name LIKE "%' . $key . '%" ' .
                 'OR email LIKE "%' . $key . '%" OR mobile_number LIKE "%' . $key . '%" ' .
                 'OR phone_number LIKE "%' . $key . '%" OR address LIKE "%' . $key . '%" ' .
+                'OR readers_card LIKE "%' . $key . '%" OR city LIKE "%' . $key . '%" '.
+                'OR organization LIKE "%' . $key . '%" OR user LIKE "%' . $key . '%" '.
+                'OR questions LIKE "%' . $key . '%" OR reservation LIKE "%' . $key . '%" '.
+                'OR state LIKE "%' . $key . '%" OR zip_code LIKE "%' . $key . '%" '.
+                'OR notes LIKE "%' . $key . '%" OR select_servicemode LIKE "%' . $key . '%" '.
+                'OR select_servicemodeoptions LIKE "%' . $key . '%")';
+
                 'OR city LIKE "%' . $key . '%" OR state LIKE "%' . $key . '%" ' .
                 'OR zip_code LIKE "%' . $key . '%" OR notes LIKE "%' . $key . '%")';
 
@@ -1347,10 +1370,17 @@ class Backend_api extends EA_Controller {
 
             $key = $this->db->escape_str($this->input->post('key'));
 
+            // omikk-customizations-review
             $where =
                 '(first_name LIKE "%' . $key . '%" OR last_name LIKE "%' . $key . '%" ' .
                 'OR email LIKE "%' . $key . '%" OR mobile_number LIKE "%' . $key . '%" ' .
                 'OR phone_number LIKE "%' . $key . '%" OR address LIKE "%' . $key . '%" ' .
+                'OR readers_card LIKE "%' . $key . '%" OR city LIKE "%' . $key . '%" '.
+                'OR organization LIKE "%' . $key . '%" OR user LIKE "%' . $key . '%" '.
+                'OR questions LIKE "%' . $key . '%" OR reservation LIKE "%' . $key . '%" '.
+                'OR state LIKE "%' . $key . '%" OR zip_code LIKE "%' . $key . '%" '.
+                'OR notes LIKE "%' . $key . '%" OR select_servicemode LIKE "%' . $key . '%" '.
+                'OR select_servicemodeoptions LIKE "%' . $key . '%")';
                 'OR city LIKE "%' . $key . '%" OR state LIKE "%' . $key . '%" ' .
                 'OR zip_code LIKE "%' . $key . '%" OR notes LIKE "%' . $key . '%")';
 

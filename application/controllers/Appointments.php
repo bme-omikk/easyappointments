@@ -411,6 +411,8 @@ class Appointments extends EA_Controller {
             $provider_id = $this->input->post('provider_id');
             $service_id = $this->input->post('service_id');
             $selected_date = $this->input->post('selected_date');
+            // omikk-customizations-review
+            $selected_duration = $this->input->post('service_duration');
 
             // Do not continue if there was no provider selected (more likely there is no provider in the system).
             if (empty($provider_id))
@@ -446,7 +448,8 @@ class Appointments extends EA_Controller {
 
             $provider = $this->providers_model->get_row($provider_id);
 
-            $response = $this->availability->get_available_hours($selected_date, $service, $provider, $exclude_appointment_id);
+            // omikk-customizations-review
+            $response = $this->availability->get_available_hours($selected_date, $service, $provider, $exclude_appointment_id, $selected_duration);
         }
         catch (Exception $exception)
         {
@@ -645,7 +648,8 @@ class Appointments extends EA_Controller {
 
         $provider = $this->providers_model->get_row($appointment['id_users_provider']);
 
-        $available_hours = $this->availability->get_available_hours($date, $service, $provider, $exclude_appointment_id);
+        // omikk-customizations-review
+        $available_hours = $this->availability->get_available_hours($date, $service, $provider, $exclude_appointment_id, (int)$this->input->post('service_duration'));
 
         $is_still_available = FALSE;
 
@@ -681,6 +685,8 @@ class Appointments extends EA_Controller {
             $appointment_id = $this->input->get_post('appointment_id');
             $manage_mode = $this->input->get_post('manage_mode');
             $selected_date_string = $this->input->get('selected_date');
+            // omikk-customizations-review
+            $selected_duration = $this->input->get_post('selected_duration');
             $selected_date = new DateTime($selected_date_string);
             $number_of_days_in_month = (int)$selected_date->format('t');
             $unavailable_dates = [];
@@ -714,7 +720,9 @@ class Appointments extends EA_Controller {
                         $current_date->format('Y-m-d'),
                         $service,
                         $provider,
-                        $exclude_appointment_id
+                        $exclude_appointment_id,
+                        // omikk-customizations-review
+                        $selected_duration
                     );
 
                     if ( ! empty($available_hours))
