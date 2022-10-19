@@ -48,7 +48,7 @@ window.FrontendBookApi = window.FrontendBookApi || {};
         });
 
         if (service) {
-            serviceDuration = service.duration;
+            serviceDuration = $('#service-duration').val();
         }
 
         // If the manage mode is true then the appointment's start date should return as available too.
@@ -160,7 +160,8 @@ window.FrontendBookApi = window.FrontendBookApi || {};
 
         var data = {
             csrfToken: GlobalVariables.csrfToken,
-            post_data: formData
+            post_data: formData,
+            service_duration: $('#service-duration').val()
         };
 
         if ($captchaText.length > 0) {
@@ -252,7 +253,8 @@ window.FrontendBookApi = window.FrontendBookApi || {};
             selected_date: encodeURIComponent(selectedDateString),
             csrfToken: GlobalVariables.csrfToken,
             manage_mode: FrontendBook.manageMode,
-            appointment_id: appointmentId
+            appointment_id: appointmentId,
+            selected_duration: $('#service-duration').val()
         };
 
         $.ajax({

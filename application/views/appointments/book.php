@@ -175,6 +175,7 @@
                                 </select>
                             </div>
 
+                            <!-- omikk-customizations-review -->
                             <div class="form-group">
                                 <label for="select-provider">
                                     <strong><?= lang('provider') ?></strong>
@@ -182,8 +183,27 @@
 
                                 <select id="select-provider" class="form-control"></select>
                             </div>
+                            <div class="form-group">
+                                <label for="select-servicemode">
+                                    <strong><?= lang('select_servicemode') ?></strong>
+                                </label>
 
-                            <div id="service-description"></div>
+                                <select id="select-servicemode" class="form-control">
+                                    <option value="<?= lang('online') ?>" selected><?= lang('online') ?></option>
+                                    <option value="<?= lang('offline') ?>"><?= lang('offline') ?></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="select-servicemodeoptions">
+                                    <strong><?= lang('select_servicemodeoptions') ?></strong>
+                                </label>
+
+                                <select id="select-servicemodeoptions" class="form-control">
+                                    <option value="<?= lang('individual') ?>" selected><?= lang('individual') ?></option>
+                                    <option value="<?= lang('group') ?>"><?= lang('group') ?></option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,6 +229,19 @@
                     <div class="row frame-content">
                         <div class="col-12 col-md-6">
                             <div id="select-date"></div>
+                            <!-- omikk-customizations-review -->
+                            <!-- SELECT APPOINTMENT HOUR -->
+                            <div class="form-group">
+                                <label for="service-duration">
+                                    <?= lang('duration_minutes') ?>
+                                </label>
+                                <select id="service-duration" class="form-control">
+                                    <option value="30" selected>30 <?= lang('minutes') ?></option>
+                                    <option value="60">60 <?= lang('minutes') ?></option>
+                                    <option value="90">90 <?= lang('minutes') ?></option>
+                                    <option value="120">120 <?= lang('minutes') ?></option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-6">
@@ -247,13 +280,7 @@
 
                     <div class="row frame-content">
                         <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label for="first-name" class="control-label">
-                                    <?= lang('first_name') ?>
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input type="text" id="first-name" class="required form-control" maxlength="100"/>
-                            </div>
+                            <!-- omikk-customizations-review -->
                             <div class="form-group">
                                 <label for="last-name" class="control-label">
                                     <?= lang('last_name') ?>
@@ -262,12 +289,45 @@
                                 <input type="text" id="last-name" class="required form-control" maxlength="120"/>
                             </div>
                             <div class="form-group">
+                                <label for="first-name" class="control-label">
+                                    <?= lang('first_name') ?>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" id="first-name" class="required form-control" maxlength="100"/>
+                            </div>
+                            <div class="form-group">
                                 <label for="email" class="control-label">
                                     <?= lang('email') ?>
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" id="email" class="required form-control" maxlength="120"/>
                             </div>
+                            <!-- omikk-customizations-review -->
+                            <div class="form-group">
+                                <label for="readers-card" class="control-label">
+                                    <?= lang('readers_card') ?>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" id="readers-card" class="required form-control" maxlength="120"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="organization" class="control-label">
+                                    <?= lang('organization') ?>
+                                </label>
+                                <input type="text" id="organization" class="form-control" maxlength="120"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="user">
+                                    <?= lang('user') ?>
+                                 </label>
+                                <select id="user" class="form-control">
+                                    <option value=""><?= lang('choose') ?></option>
+                                    <option value="<?= lang('author') ?>"><?= lang('author') ?></option>
+                                    <option value="<?= lang('administrator') ?>"><?= lang('administrator') ?></option>
+                                </select>
+    		            </div>
+                            <!-- omikk-customizations-review -->
+                            <!--
                             <div class="form-group">
                                 <label for="phone-number" class="control-label">
                                     <?= lang('phone_number') ?>
@@ -276,9 +336,12 @@
                                 <input type="text" id="phone-number" maxlength="60"
                                        class="<?= $require_phone_number === '1' ? 'required' : '' ?> form-control"/>
                             </div>
+                            -->
                         </div>
 
                         <div class="col-12 col-md-6">
+                            <!-- omikk-customizations-review -->
+                            <!--
                             <div class="form-group">
                                 <label for="address" class="control-label">
                                     <?= lang('address') ?>
@@ -297,11 +360,25 @@
                                 </label>
                                 <input type="text" id="zip-code" class="form-control" maxlength="120"/>
                             </div>
+                            -->
+                            <div class="form-group">
+                                <label for="reservation">
+                                    <?= lang('reservation') ?>
+                                </label>
+                                <input type="text" id="reservation" class="form-control" maxlength="120"/>
+          		            </div>
                             <div class="form-group">
                                 <label for="notes" class="control-label">
                                     <?= lang('notes') ?>
                                 </label>
                                 <textarea id="notes" maxlength="500" class="form-control" rows="1"></textarea>
+                            </div>
+                            <!-- omikk-customizations-review -->
+                            <div class="form-group">
+                                <label for="questions" class="control-label">
+                                    <?= lang('questions') ?>
+                                </label>
+                                <textarea id="questions" maxlength="500" class="form-control" rows="1"></textarea>
                             </div>
                         </div>
                     </div>
@@ -396,22 +473,27 @@
 
             <div id="frame-footer">
                 <small>
+                    <!-- omikk-customizations-review -->
+                    <!--
                     <span class="footer-powered-by">
                         Powered By
 
                         <a href="https://easyappointments.org" target="_blank">Easy!Appointments</a>
                     </span>
-
+                    -->
                     <span class="footer-options">
                         <span id="select-language" class="badge badge-secondary">
                             <i class="fas fa-language mr-2"></i>
                             <?= ucfirst(config('language')) ?>
                         </span>
-
+                        
+                        <!-- omikk-customizations-review -->
+                        <!--
                         <a class="backend-link badge badge-primary" href="<?= site_url('backend'); ?>">
                             <i class="fas fa-sign-in-alt mr-2"></i>
                             <?= $this->session->user_id ? lang('backend_section') : lang('login') ?>
                         </a>
+                        -->
                     </span>
                 </small>
             </div>

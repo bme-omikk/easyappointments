@@ -138,10 +138,17 @@
                 email: $('#admin-email').val(),
                 mobile_number: $('#admin-mobile-number').val(),
                 phone_number: $('#admin-phone-number').val(),
-                address: $('#admin-address').val(),
+                address: $('#address').val(),
+                readers_card: $('#readers-card').val(),      
+                organization: $('#organization').val(),
+                user: $('#user').val(),
+                questions: $('#questions').val(),
+                reservation: $('#reservation').val(),
                 city: $('#admin-city').val(),
                 state: $('#admin-state').val(),
                 zip_code: $('#admin-zip-code').val(),
+                select_servicemode: $('#admin-select-servicemode').val(),
+                select_servicemodeoptions: $('#select_servicemodeoptions').val(),
                 notes: $('#admin-notes').val(),
                 timezone: $('#admin-timezone').val(),
                 settings: {
@@ -333,9 +340,16 @@
         $('#admin-mobile-number').val(admin.mobile_number);
         $('#admin-phone-number').val(admin.phone_number);
         $('#admin-address').val(admin.address);
+        $('#admin-readers-card').val(admin.readers_card);
+        $('#admin-organization').val(admin.organization);
+        $('#admin-user').val(admin.user);
+        $('#admin-questions').val(admin.questions);
+        $('#admin-reservation').val(admin.reservation);
         $('#admin-city').val(admin.city);
         $('#admin-state').val(admin.state);
         $('#admin-zip-code').val(admin.zip_code);
+        $('#admin-select-servicemode').val(admin.select_servicemode);
+        $('#admin-select_servicemodeoptions').val(admin.select_servicemodeoptions);
         $('#admin-notes').val(admin.notes);
         $('#admin-timezone').val(admin.timezone);
 

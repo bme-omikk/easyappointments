@@ -221,11 +221,27 @@
                                     <select id="select-provider" class="required form-control"></select>
                                 </div>
 
+                                <!-- omikk-customizations-review --> 
                                 <div class="form-group">
-                                    <label for="appointment-location" class="control-label">
-                                        <?= lang('location') ?>
+                                    <label for="select-servicemode">
+                                        <?= lang('select_servicemode') ?>
                                     </label>
-                                    <input id="appointment-location" class="form-control">
+
+                                    <select id="select-servicemode" class="form-control">
+                                        <option value="<?= lang('online') ?>" selected><?= lang('online') ?></option>
+                                        <option value="<?= lang('offline') ?>"><?= lang('offline') ?></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="select-servicemodeoptions">
+                                        <?= lang('select_servicemodeoptions') ?>
+                                    </label>
+
+                                    <select id="select-servicemodeoptions" class="form-control">
+                                        <option value="<?= lang('individual') ?>" selected><?= lang('individual') ?></option>
+                                        <option value="<?= lang('group') ?>"><?= lang('group') ?></option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -244,25 +260,6 @@
                                 <div class="form-group">
                                     <label for="end-datetime" class="control-label"><?= lang('end_date_time') ?></label>
                                     <input id="end-datetime" class="required form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label"><?= lang('timezone') ?></label>
-
-                                    <ul>
-                                        <li>
-                                            <?= lang('provider') ?>:
-                                            <span class="provider-timezone">
-                                                -
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <?= lang('current_user') ?>:
-                                            <span>
-                                                <?= $timezones[$timezone] ?>
-                                            </span>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -318,38 +315,37 @@
                                     </label>
                                     <input id="email" class="required form-control">
                                 </div>
-
-                                <div class="form-group">
-                                    <label for="phone-number" class="control-label">
-                                        <?= lang('phone_number') ?>
-                                        <?php if ($require_phone_number === '1'): ?>
-                                            <span class="text-danger">*</span>
-                                        <?php endif ?>
-                                    </label>
-                                    <input id="phone-number"
-                                           class="form-control <?= $require_phone_number === '1' ? 'required' : '' ?>">
-                                </div>
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                                    <label for="address" class="control-label">
-                                        <?= lang('address') ?>
+                                    <label for="readers-card" class="control-label">
+                                        <?= lang('readers_card') ?>
                                     </label>
-                                    <input id="address" class="form-control">
+                                    <input id="readers-card" class="form-control">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="city" class="control-label">
-                                        <?= lang('city') ?>
+                                    <label for="orgazisation" class="control-label">
+                                        <?= lang('organization') ?>
                                     </label>
-                                    <input id="city" class="form-control">
+                                    <input type="text" id="organization" class="form-control" maxlength="120"/>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="zip-code" class="control-label">
-                                        <?= lang('zip_code') ?>
+                                    <label for="user">
+                                        <?= lang('user') ?>
+                                     </label>
+                                    <select id="user" class="form-control">
+                                        <option value="<?= lang('author') ?>"><?= lang('author') ?></option>
+                                        <option value="<?= lang('administrator') ?>"><?= lang('administrator') ?></option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reservation">
+                                        <?= lang('reservation') ?>
                                     </label>
-                                    <input id="zip-code" class="form-control">
+                                    <input type="text" id="reservation" class="form-control" maxlength="120"/>
                                 </div>
 
                                 <div class="form-group">
@@ -357,6 +353,13 @@
                                         <?= lang('notes') ?>
                                     </label>
                                     <textarea id="customer-notes" rows="2" class="form-control"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                   <label for="questions" class="control-label">
+                                    <?= lang('questions') ?>
+                                   </label>
+                                   <textarea id="questions" maxlength="500" class="form-control" rows="1"></textarea>
                                 </div>
                             </div>
                         </div>

@@ -525,6 +525,10 @@ window.GeneralFunctions = window.GeneralFunctions || {};
             data.push(user.address);
         }
 
+        if (user.readers_card) {
+            data.push(user.readers_card);
+        }
+
         if (user.city) {
             data.push(user.city);
         }
@@ -535,6 +539,30 @@ window.GeneralFunctions = window.GeneralFunctions || {};
 
         if (user.zip_code) {
             data.push(user.zip_code);
+        }
+
+        if (user.organization) {
+            data.push(user.organization);
+        }
+
+        if (user.user) {
+            data.push(user.user);
+        }
+
+        if (user.questions) {
+            data.push(user.questions);
+        }
+
+        if (user.reservation) {
+            data.push(user.reservation);
+        }
+
+        if (user.select_servicemode) {
+            data.push(user.select_servicemode);
+        }
+
+        if (user.select_servicemodeoptions) {
+            data.push(user.select_servicemodeoptions);
         }
 
         if (!data.length) {
