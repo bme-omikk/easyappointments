@@ -158,7 +158,6 @@ class Email {
             'customer_reservation' => $customer['reservation'],
             'customer_select_servicemode' => $customer['select_servicemode'],
             'customer_select_servicemodeoptions' => $customer['select_servicemodeoptions'],
-            'customer_address' => $customer['address'],
         ], TRUE);
 
         $mailer = $this->create_mailer();
