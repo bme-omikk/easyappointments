@@ -175,7 +175,7 @@
                                 </select>
                             </div>
 
-                            <!-- omikk-customizations-review -->
+                            
                             <div class="form-group">
                                 <label for="select-provider">
                                     <strong><?= lang('provider') ?></strong>
@@ -229,7 +229,7 @@
                     <div class="row frame-content">
                         <div class="col-12 col-md-6">
                             <div id="select-date"></div>
-                            <!-- omikk-customizations-review -->
+                            
                             <!-- SELECT APPOINTMENT HOUR -->
                             <div class="form-group">
                                 <label for="service-duration">
@@ -280,7 +280,7 @@
 
                     <div class="row frame-content">
                         <div class="col-12 col-md-6">
-                            <!-- omikk-customizations-review -->
+                            
                             <div class="form-group">
                                 <label for="last-name" class="control-label">
                                     <?= lang('last_name') ?>
@@ -302,7 +302,7 @@
                                 </label>
                                 <input type="text" id="email" class="required form-control" maxlength="120"/>
                             </div>
-                            <!-- omikk-customizations-review -->
+                            
                             <div class="form-group">
                                 <label for="readers-card" class="control-label">
                                     <?= lang('readers_card') ?>
@@ -326,7 +326,7 @@
                                     <option value="<?= lang('administrator') ?>"><?= lang('administrator') ?></option>
                                 </select>
     		            </div>
-                            <!-- omikk-customizations-review -->
+                            
                             <!--
                             <div class="form-group">
                                 <label for="phone-number" class="control-label">
@@ -340,7 +340,7 @@
                         </div>
 
                         <div class="col-12 col-md-6">
-                            <!-- omikk-customizations-review -->
+                            
                             <!--
                             <div class="form-group">
                                 <label for="address" class="control-label">
@@ -373,7 +373,7 @@
                                 </label>
                                 <textarea id="notes" maxlength="500" class="form-control" rows="1"></textarea>
                             </div>
-                            <!-- omikk-customizations-review -->
+                            
                             <div class="form-group">
                                 <label for="questions" class="control-label">
                                     <?= lang('questions') ?>
@@ -473,7 +473,7 @@
 
             <div id="frame-footer">
                 <small>
-                    <!-- omikk-customizations-review -->
+                    
                     <!--
                     <span class="footer-powered-by">
                         Powered By
@@ -487,7 +487,7 @@
                             <?= ucfirst(config('language')) ?>
                         </span>
                         
-                        <!-- omikk-customizations-review -->
+                        
                         <!--
                         <a class="backend-link badge badge-primary" href="<?= site_url('backend'); ?>">
                             <i class="fas fa-sign-in-alt mr-2"></i>

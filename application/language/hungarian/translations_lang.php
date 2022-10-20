@@ -9,7 +9,7 @@ $lang['duration'] = 'Időtartam';
 $lang['minutes'] = 'Perc';
 $lang['price'] = 'Ár';
 $lang['back'] = 'Vissza';
-// omikk-customizations-review
+
 $lang['appointment_date_and_time'] = 'Időpont kiválasztása';
 $lang['no_available_hours'] = 'A kiválasztott napon nincsen szabad időpont. Kérlek válassz másik dátumot.';
 $lang['appointment_hour_missing'] = 'Válassz egy időpontot mielőtt folytatnád.';
@@ -17,7 +17,7 @@ $lang['customer_information'] = 'Töltsd ki az adataidat.';
 $lang['first_name'] = 'Keresztnév';
 $lang['last_name'] = 'Vezetéknév';
 $lang['email'] = 'Email';
-// omikk-customizations-review
+
 $lang['user'] = 'Felhasználó';
 $lang['choose'] = '-- Kérjük, válasszon egy lehetőséget --';
 $lang['author'] = 'Szerző';
@@ -26,12 +26,12 @@ $lang['organization'] = 'Szervezeti egység';
 $lang['phone_number'] = 'Telefon';
 $lang['phone'] = 'Phone';
 $lang['address'] = 'Cím';
-// omikk-customizations-review
+
 $lang['readers_card'] = 'Olvasójegy száma';
 $lang['city'] = 'Város';
 $lang['zip_code'] = 'Irányítószám';
 $lang['notes'] = 'Megjegyzés';
-// omikk-customizations-review
+
 $lang['questions'] = 'Kérdéseim';
 $lang['reservation'] = 'Foglalás célja';
 $lang['language'] = 'Language';
@@ -40,26 +40,26 @@ $lang['fields_are_required'] = 'A *-gal jelöltek kitöltése kötelező.';
 $lang['appointment_confirmation'] = 'Az időpont jóváhagyása';
 $lang['confirm'] = 'Jóváhagyás';
 $lang['update'] = 'Frissít';
-// omikk-customizations-review
+
 $lang['cancel_appointment_hint'] = 'Nyomd meg a "Mégse" gombot a foglalt időpont eltávolításához';
 $lang['cancel'] = 'Mégse';
 $lang['appointment_registered'] = 'Az időpontodat sikeresen lefoglaltuk.';
 $lang['cancel_appointment_title'] = 'Időpont eltávolítása';
 $lang['appointment_cancelled'] = 'Az időpontot sikeresen lemondtad.';
 $lang['appointment_cancelled_title'] = 'Időpont lemondva';
-// omikk-customizations-review
+
 $lang['reason'] = 'Az időpont lemondásának oka';
 $lang['appointment_removed_from_schedule'] = 'A következő időpont el lett távolítva a cég beosztásából';
 $lang['appointment_details_was_sent_to_you'] = 'Egy emailt küldtünk a foglalás részleteivel.';
 $lang['add_to_google_calendar'] = 'Az időpont Google naptárba való felvétele';
 $lang['appointment_booked'] = 'Az időpontod sikeresen lefoglalva.';
-// omikk-customizations-review
+
 $lang['thank_you_for_appointment'] = 'Köszönjük, hogy nálunk foglaltál időpontot. A foglalás részleteit lent láthatod. Amennyiben kérdésed van teremfoglalással kapcsolatban, írj nekünk a konyvtar@bme.hu címre.
 Ez egy automatikusan generált e-mail, kérjük, ne válaszolj rá!';
 $lang['appointment_details_title'] = 'Az időpont részletei';
 $lang['customer_details_title'] = 'Vendég részletei';
 $lang['service'] = 'Szolgáltatás';
-// omikk-customizations-review
+
 $lang['provider'] = 'Kérjük, válasszon!';
 $lang['provider_subject'] = 'Szakterület';
 $lang['provider_room'] = 'Terem';
@@ -149,7 +149,7 @@ $lang['no_category'] = 'Nincs kategorizálva';
 $lang['description'] = 'Leírás';
 $lang['categories'] = 'Kategóriák';
 $lang['admins'] = 'Adminok';
-// omikk-customizations-review
+
 $lang['providers'] = 'Téma vagy terem';
 $lang['secretaries'] = 'Titkárok';
 $lang['mobile_number'] = 'Mobil szám';

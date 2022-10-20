@@ -221,7 +221,7 @@
                                     <select id="select-provider" class="required form-control"></select>
                                 </div>
 
-                                <!-- omikk-customizations-review --> 
+                                 
                                 <div class="form-group">
                                     <label for="select-servicemode">
                                         <?= lang('select_servicemode') ?>

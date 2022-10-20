@@ -50,12 +50,12 @@ class Availability {
      *
      * @throws Exception
      */
-    // omikk-customizations-review
+    
     public function get_available_hours($date, $service, $provider, $exclude_appointment_id = NULL, $selected_duration = NULL)
     {
         $available_periods = $this->get_available_periods($date, $provider, $exclude_appointment_id);
 
-        // omikk-customizations-review
+        
         $available_hours = $this->generate_available_hours($date, $service, $available_periods, $selected_duration);
 
         if ($service['attendants_number'] > 1)
@@ -294,7 +294,7 @@ class Availability {
      *
      * @throws Exception
      */
-    // omikk-customizations-review
+    
     protected function generate_available_hours(
         $date,
         $service,
@@ -309,7 +309,7 @@ class Availability {
             $start_hour = new DateTime($date . ' ' . $period['start']);
             $end_hour = new DateTime($date . ' ' . $period['end']);
 
-            // omikk-customizations-review
+            
             if ($selected_duration === NULL) {
                 $selected_duration = $service['duration'];
             }
@@ -318,7 +318,7 @@ class Availability {
             $current_hour = $start_hour;
             $diff = $current_hour->diff($end_hour);
 
-            // omikk-customizations-review
+            
             while (($diff->h * 60 + $diff->i) >= (int)$selected_duration && $diff->invert === 0)
             {
                 $available_hours[] = $current_hour->format('H:i');
