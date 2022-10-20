@@ -84,7 +84,7 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                 city: $dialog.find('#city').val(),
                 zip_code: $dialog.find('#zip-code').val(),
                 select_servicemode: $dialog.find('#select-servicemode').val(),
-		        select_servicemodeoptions: $dialog.find('#select-servicemodeoptions').val(),
+                select_servicemodeoptions: $dialog.find('#select-servicemodeoptions').val(),
                 notes: $dialog.find('#customer-notes').val()
             };
 
@@ -301,7 +301,7 @@ window.BackendCalendarAppointmentsModal = window.BackendCalendarAppointmentsModa
                                 || customer.reservation.toLowerCase().indexOf(key) !== -1
                                 || customer.city.toLowerCase().indexOf(key) !== -1
                                 || customer.select_servicemode.toLowerCase().indexOf(key) !== -1
-				                || customer.select_servicemodeoptions.toLowerCase().indexOf(key) !== -1
+                                || customer.select_servicemodeoptions.toLowerCase().indexOf(key) !== -1
                                 || customer.zip_code.toLowerCase().indexOf(key) !== -1
                                 || customer.notes.toLowerCase().indexOf(key) !== -1) {
                                 $('<div/>', {

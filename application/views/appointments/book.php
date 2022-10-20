@@ -175,7 +175,6 @@
                                 </select>
                             </div>
 
-                            
                             <div class="form-group">
                                 <label for="select-provider">
                                     <strong><?= lang('provider') ?></strong>
@@ -229,7 +228,6 @@
                     <div class="row frame-content">
                         <div class="col-12 col-md-6">
                             <div id="select-date"></div>
-                            
                             <!-- SELECT APPOINTMENT HOUR -->
                             <div class="form-group">
                                 <label for="service-duration">
@@ -302,7 +300,6 @@
                                 </label>
                                 <input type="text" id="email" class="required form-control" maxlength="120"/>
                             </div>
-                            
                             <div class="form-group">
                                 <label for="readers-card" class="control-label">
                                     <?= lang('readers_card') ?>
@@ -325,55 +322,22 @@
                                     <option value="<?= lang('author') ?>"><?= lang('author') ?></option>
                                     <option value="<?= lang('administrator') ?>"><?= lang('administrator') ?></option>
                                 </select>
-    		            </div>
-                            
-                            <!--
-                            <div class="form-group">
-                                <label for="phone-number" class="control-label">
-                                    <?= lang('phone_number') ?>
-                                    <?= $require_phone_number === '1' ? '<span class="text-danger">*</span>' : '' ?>
-                                </label>
-                                <input type="text" id="phone-number" maxlength="60"
-                                       class="<?= $require_phone_number === '1' ? 'required' : '' ?> form-control"/>
-                            </div>
-                            -->
+    		                </div>
                         </div>
 
                         <div class="col-12 col-md-6">
-                            
-                            <!--
-                            <div class="form-group">
-                                <label for="address" class="control-label">
-                                    <?= lang('address') ?>
-                                </label>
-                                <input type="text" id="address" class="form-control" maxlength="120"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="city" class="control-label">
-                                    <?= lang('city') ?>
-                                </label>
-                                <input type="text" id="city" class="form-control" maxlength="120"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="zip-code" class="control-label">
-                                    <?= lang('zip_code') ?>
-                                </label>
-                                <input type="text" id="zip-code" class="form-control" maxlength="120"/>
-                            </div>
-                            -->
                             <div class="form-group">
                                 <label for="reservation">
                                     <?= lang('reservation') ?>
                                 </label>
                                 <input type="text" id="reservation" class="form-control" maxlength="120"/>
-          		            </div>
+                            </div>
                             <div class="form-group">
                                 <label for="notes" class="control-label">
                                     <?= lang('notes') ?>
                                 </label>
                                 <textarea id="notes" maxlength="500" class="form-control" rows="1"></textarea>
                             </div>
-                            
                             <div class="form-group">
                                 <label for="questions" class="control-label">
                                     <?= lang('questions') ?>
@@ -473,27 +437,11 @@
 
             <div id="frame-footer">
                 <small>
-                    
-                    <!--
-                    <span class="footer-powered-by">
-                        Powered By
-
-                        <a href="https://easyappointments.org" target="_blank">Easy!Appointments</a>
-                    </span>
-                    -->
                     <span class="footer-options">
                         <span id="select-language" class="badge badge-secondary">
                             <i class="fas fa-language mr-2"></i>
                             <?= ucfirst(config('language')) ?>
                         </span>
-                        
-                        
-                        <!--
-                        <a class="backend-link badge badge-primary" href="<?= site_url('backend'); ?>">
-                            <i class="fas fa-sign-in-alt mr-2"></i>
-                            <?= $this->session->user_id ? lang('backend_section') : lang('login') ?>
-                        </a>
-                        -->
                     </span>
                 </small>
             </div>

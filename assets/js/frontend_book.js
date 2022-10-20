@@ -274,10 +274,8 @@ window.FrontendBook = window.FrontendBook || {};
             if (selected_service == 7) {
                 $('#organization').parent().css('display', 'block');
                 $('#user').parent().css('display', 'block');
-                
             }
             else {
-                
                 $('#organization').parent().css('display', 'none');
                 $('#user').parent().css('display', 'none');
             }
@@ -570,8 +568,6 @@ window.FrontendBook = window.FrontendBook || {};
 
         $('#appointment-details').empty();
 
-        // omikk-customizations-review
-        // OMIKK: to change the text of the provider name baes on the selected service
         let selected_service = $('#select-service').val();
         $('<div/>', {
             'html': [
@@ -590,7 +586,7 @@ window.FrontendBook = window.FrontendBook || {};
                         $('<br/>'),
                         (selected_service!=2 ? $('<span/>', {'text':  EALang.select_servicemode + ': ' + $('#select-servicemode option:selected').text()}) : ''),
                         (selected_service!=2 ? $('<br/>') : ''),
-                       
+
                         (selected_service!=2 ? $('<span/>', {'text':  EALang.select_servicemodeoptions + ': ' + $('#select-servicemodeoptions option:selected').text()}) : ''),
                         (selected_service!=2 ? $('<br/>') : ''),
                         $('<span/>', {

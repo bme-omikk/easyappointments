@@ -716,7 +716,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                         'text': event.data.customer.select_servicemode
                     }),
                     $('<br/>'),
- 
+
                     $('<strong/>', {
                         'class': 'd-inline-block mr-2',
                         'text': EALang.select_servicemodeoptions
@@ -837,7 +837,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                     $('<span/>', {
                     }),
                     $('<br/>'),
- 
+
                     $('<strong/>', {
                         'class': 'd-inline-block mr-2',
                         'text': EALang.select_servicemode
@@ -893,11 +893,11 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                     }),
                     $('<br/>'),
 
-                     $('<hr/>'),
- 
-                     $('<div/>', {
+                    $('<hr/>'),
+
+                    $('<div/>', {
                          ]
-                     })
+                    })
                  ]
             }) }
             }

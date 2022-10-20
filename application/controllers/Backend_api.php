@@ -551,7 +551,6 @@ class Backend_api extends EA_Controller {
             $key = $this->db->escape_str($this->input->post('key'));
             $key = strtoupper($key);
 
-            
             $where =
                 '(first_name LIKE upper("%' . $key . '%") OR ' .
                 'last_name  LIKE upper("%' . $key . '%") OR ' .
@@ -1133,7 +1132,6 @@ class Backend_api extends EA_Controller {
 
             $key = $this->db->escape_str($this->input->post('key'));
 
-            
             $where =
                 '(first_name LIKE "%' . $key . '%" OR last_name LIKE "%' . $key . '%" ' .
                 'OR email LIKE "%' . $key . '%" OR mobile_number LIKE "%' . $key . '%" ' .
@@ -1248,7 +1246,6 @@ class Backend_api extends EA_Controller {
 
             $key = $this->db->escape_str($this->input->post('key'));
 
-            
             $where =
                 '(first_name LIKE "%' . $key . '%" OR last_name LIKE "%' . $key . '%" ' .
                 'OR email LIKE "%' . $key . '%" OR mobile_number LIKE "%' . $key . '%" ' .
@@ -1370,7 +1367,6 @@ class Backend_api extends EA_Controller {
 
             $key = $this->db->escape_str($this->input->post('key'));
 
-            
             $where =
                 '(first_name LIKE "%' . $key . '%" OR last_name LIKE "%' . $key . '%" ' .
                 'OR email LIKE "%' . $key . '%" OR mobile_number LIKE "%' . $key . '%" ' .

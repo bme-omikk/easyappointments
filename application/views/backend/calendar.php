@@ -221,7 +221,6 @@
                                     <select id="select-provider" class="required form-control"></select>
                                 </div>
 
-                                 
                                 <div class="form-group">
                                     <label for="select-servicemode">
                                         <?= lang('select_servicemode') ?>
