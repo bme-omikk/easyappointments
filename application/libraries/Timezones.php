@@ -23,7 +23,7 @@ class Timezones {
     /**
      * @var string
      */
-    protected $default = 'UTC';
+    protected $default = 'Europe/Budapest';
 
     /**
      * @var array
@@ -539,7 +539,7 @@ class Timezones {
      */
     public function get_default_timezone()
     {
-        return 'UTC';
+        return $this->default;
     }
 
     /**

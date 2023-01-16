@@ -524,6 +524,7 @@ class Appointments extends EA_Controller {
             $manage_mode = filter_var($post_data['manage_mode'], FILTER_VALIDATE_BOOLEAN);
             $appointment = $post_data['appointment'];
             $customer = $post_data['customer'];
+            $selected_duration = $this->input->post('service_duration');
 
             // Check appointment availability before registering it to the database.
             $appointment['id_users_provider'] = $this->check_datetime_availability();
@@ -566,9 +567,16 @@ class Appointments extends EA_Controller {
             $customer_id = $this->customers_model->add($customer);
 
             $appointment_start_instance = new DateTime($appointment['start_datetime']);
-            $appointment['end_datetime'] = $appointment_start_instance
-                ->add(new DateInterval('PT' . $service['duration'] . 'M'))
-                ->format('Y-m-d H:i:s');
+            if (isset($selected_duration)) {
+                $appointment['end_datetime'] = $appointment_start_instance
+                    ->add(new DateInterval('PT' . $selected_duration . 'M'))
+                    ->format('Y-m-d H:i:s');
+            }
+            else {
+                $appointment['end_datetime'] = $appointment_start_instance
+                    ->add(new DateInterval('PT' . $service['duration'] . 'M'))
+                    ->format('Y-m-d H:i:s');
+            }
 
             if ( ! in_array($service['id'], $provider['services']))
             {

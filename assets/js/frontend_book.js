@@ -244,7 +244,6 @@ window.FrontendBook = window.FrontendBook || {};
             FrontendBookApi.getUnavailableDates($('#select-provider').val(), $(this).val(),
                 $('#select-date').datepicker('getDate').toString('yyyy-MM-dd'));
 
-            // omikk-customizations-review
             // OMIKK: show/hide additional options based on the selected service
             let selected_service = this.options[this.selectedIndex].value;
             if (selected_service == 5 || selected_service == 7) {

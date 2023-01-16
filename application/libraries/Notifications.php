@@ -91,7 +91,7 @@ class Notifications {
             {
                 $email->send_appointment_details($appointment, $provider,
                     $service, $customer, $settings, $customer_title,
-                    $customer_message, $customer_link, new Email($customer['email']), new Text($ics_stream), $customer['timezone']);
+                    $customer_message, $customer_link, new Email($customer['email']), new Text($ics_stream), "Europe/Budapest");
             }
 
             $send_provider = filter_var(

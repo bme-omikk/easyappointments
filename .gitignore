@@ -29,3 +29,5 @@
 /vendor/
 /metafile
 .DS_Store
+composer.lock
+package-lock.json
