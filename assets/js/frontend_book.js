@@ -270,6 +270,19 @@ window.FrontendBook = window.FrontendBook || {};
                  if ($('#readers-card').val() == '') $('#readers-card').val('');
             }
 
+           if (selected_service == 8){
+            $('#readers-card').parent().css('display', 'none');
+            $('#reservation').prev().empty();
+            $('#reservation').prev().append(EALang.group_size);
+            $('#select-provider').prev().empty();
+            $('#select-provider').prev().append('<strong>' + EALang.provider_room  + '</strong>');
+            $('#select-provider').prop("disabled", true);
+
+           }
+            else{
+               $('#select-provider').prop("disabled", false);
+           }
+
             if (selected_service == 7) {
                 $('#organization').parent().css('display', 'block');
                 $('#user').parent().css('display', 'block');

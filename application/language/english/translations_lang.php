@@ -54,6 +54,7 @@ $lang['service'] = 'Services';
 $lang['provider'] = 'Please, select';
 $lang['provider_subject'] = 'Subject';
 $lang['provider_room'] = 'Room';
+$lang['group_size'] = "Group size";
 $lang['select_servicemode'] = 'Consultation mode';
 $lang['select_servicemodeoptions'] = 'Consultation';
 $lang['online'] = 'Online (MS Teams)';

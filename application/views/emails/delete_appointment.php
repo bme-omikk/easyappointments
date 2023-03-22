@@ -21,10 +21,10 @@
                 <td style="padding: 3px;"><?= $appointment_service ?></td>
             </tr>
             <tr>
-                <td class="label" style="padding: 3px;font-weight: bold;"><?php if ($appointment_service == 'Teremfoglalás / Room reservation') print lang('provider_room'); else print lang('provider_subject'); ?></td>
+                <td class="label" style="padding: 3px;font-weight: bold;"><?php if ($appointment_service == 'Teremfoglalás / Room reservation' || $appointment_service =='Tojáskeresés / Eggs hunting') print lang('provider_room'); else print lang('provider_subject'); ?></td>
                 <td style="padding: 3px;"><?= $appointment_provider ?></td>
             </tr>
-            <?php if($appointment_service !='Teremfoglalás / Room reservation') : ?>
+            <?php if($appointment_service !='Teremfoglalás / Room reservation' && $appointment_service !='Tojáskeresés / Eggs hunting') : ?>
             <tr>
                 <td class="label" style="padding: 3px;font-weight: bold;"><?= lang('select_servicemode') ?></td>
                 <td style="padding: 3px;"><?= $customer_select_servicemode ?></td>
@@ -72,7 +72,7 @@
                 <td style="padding: 3px;"><?php if ($customer_user) print $customer_user; else print "-"; ?></td>
             </tr>
             <?php endif; ?>
-            <?php if($appointment_service !='Teremfoglalás / Room reservation') : ?>
+            <?php if($appointment_service !='Teremfoglalás / Room reservation' && $appointment_service !='Tojáskeresés / Eggs hunting') : ?>
             <tr>
                 <td class="label" style="padding: 3px;font-weight: bold;"><?= lang('questions') ?></td>
                 <td style="padding: 3px;"><?php if ($customer_questions !='') print $customer_questions; else print "-"; ?></td>
@@ -89,6 +89,18 @@
                 <td style="padding: 3px;"><?php if ($customer_notes !='') print $customer_notes; else print "-"; ?></td>
             </tr>
             <?php endif; ?>
+            <?php if($appointment_service =='Tojáskeresés / Eggs hunting') : ?>
+             <tr>
+                <td class="label" style="padding: 3px;font-weight: bold;"><?= lang('group_size') ?></td>
+                <td style="padding: 3px;"><?php if ($customer_reservation !='') print $customer_reservation; else print "-"; ?></td>
+
+            </tr>
+            <tr>
+                <td class="label" style="padding: 3px;font-weight: bold;"><?= lang('notes') ?></td>
+                <td style="padding: 3px;"><?php if ($customer_notes !='') print $customer_notes; else print "-"; ?></td>
+            </tr>
+          <?php endif; ?>
+
         </table>
 
         <h2><?= lang('reason') ?></h2>

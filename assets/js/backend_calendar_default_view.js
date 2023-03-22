@@ -668,6 +668,131 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
                 ]
             })
         }
+        if(event.data.service.name == 'Tojáskeresés / Eggs hunting'){ 
+
+            $html = $('<div/>', {
+                'html': [
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.start
+                    }),
+                    $('<span/>', {
+                        'text': GeneralFunctions.formatDate(event.start.format('YYYY-MM-DD HH:mm:ss'), GlobalVariables.dateFormat, true)
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.end
+                    }),
+                    $('<span/>', {
+                        'text': GeneralFunctions.formatDate(event.end.format('YYYY-MM-DD HH:mm:ss'), GlobalVariables.dateFormat, true)
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.service
+                    }),
+                    $('<span/>', {
+                        'text': event.data.service.name
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.provider_room
+                    }),
+                    GeneralFunctions.renderMapIcon(event.data.provider),
+                    $('<span/>', {
+                        'text': event.data.provider.first_name + ' ' + event.data.provider.last_name
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.customer
+                    }),
+                    GeneralFunctions.renderMapIcon(event.data.customer),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.first_name + ' ' + event.data.customer.last_name
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.email
+                    }),
+                    GeneralFunctions.renderMailIcon(event.data.customer.email),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.email
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'class': 'd-inline-block mr-2',
+                        'text': EALang.group_size
+                    }),
+                    $('<span/>', {
+                        'class': 'd-inline-block ml-1',
+                        'text': event.data.customer.reservation!='' ? event.data.customer.reservation : '-'
+                    }),
+                    $('<br/>'),
+
+                    $('<strong/>', {
+                        'text': EALang.notes
+                    }),
+                    $('<span/>', {
+                        'text': getEventNotes(event)
+                    }),
+
+                    $('<br/>'),
+
+                    $('<hr/>'),
+
+                    $('<div/>', {
+                        'class': 'd-flex justify-content-center',
+                        'html': [
+                            $('<button/>', {
+                                'class': 'close-popover btn btn-outline-secondary mr-2',
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-ban mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.close
+                                    })
+                                ]
+                            }),
+                            $('<button/>', {
+                                'class': 'delete-popover btn btn-outline-secondary ' + displayDelete,
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-trash-alt mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.delete
+                                    })
+                                ]
+                            }),
+                            $('<button/>', {
+                                'class': 'edit-popover btn btn-primary ' + displayEdit,
+                                'html': [
+                                    $('<i/>', {
+                                        'class': 'fas fa-edit mr-2'
+                                    }),
+                                    $('<span/>', {
+                                        'text': EALang.edit
+                                    })
+                                ]
+                            })
+                        ]
+                    })
+                ]
+            }) }
+
         if (event.data.service.name == 'Információ & konzultáció / Information & consultation') {
 
             $html = $('<div/>', {
